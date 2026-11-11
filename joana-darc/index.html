@@ -24,7 +24,7 @@
   --paper: #ebe7dd;   /* cal de parede de mosteiro */
   --paper-2: #e1dccf;
   --ink: #1e1c17;
-  --muted: #6a6457;
+  --muted: #575246;
   --gold: #a5783a;    /* chama de vela */
   --gold-light: #d2ad6c;
   --flame: #f2c879;
@@ -74,7 +74,7 @@ h3 { font-family: "Cormorant"; font-weight: 600; font-size: 22px; line-height: 1
 .aguardando .preco { opacity: 0; }
 
 /* ---------- topo ---------- */
-.hero { min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; padding: 0; color: #e4dcc8; background: var(--night) url("img/fundo.webp") center 20% / cover; overflow: hidden; }
+.hero { position: relative; isolation: isolate; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; padding: 0; color: #e4dcc8; background: var(--night) url("img/fundo.webp") center 20% / cover; overflow: hidden; }
 @media (max-width: 700px) { .hero { background-image: url("img/fundo-m.webp"); background-position: 50% 0; background-size: 100% auto; background-repeat: no-repeat; } }
 .hero::before { content: ""; position: absolute; inset: 0; background:
   radial-gradient(ellipse 70% 55% at 50% 30%, rgba(18,17,13,.05) 0%, rgba(18,17,13,.5) 60%, rgba(18,17,13,.9) 100%),
@@ -262,6 +262,22 @@ footer a { color: #ab9f86; }
 .barra .t span { font-size: 14px; color: #ab9f86; }
 .barra .cta { width: auto; margin: 0; padding: 11px 18px; font-size: 15px; box-shadow: none; white-space: nowrap; }
 @media (min-width: 900px) { .barra { display: none; } footer { padding-bottom: 44px; } }
+
+/* legibilidade: a Cormorant fica nos títulos; rótulos pequenos em versalete vão para a EB Garamond,
+   maiores e menos espaçados, e todos os números ficam alinhados (sem o 3 e o 1 descendo da linha) */
+body { font-variant-numeric: lining-nums; }
+.kicker, .hero .marca, .hero .data, .hero .rolar, .versao .quem, .folha .tit, .folha .fim, .marco .dia,
+.parte .pint span, .extra b, .assina .arroba, .garantia .selo span, footer .marca, .num b small {
+  font-family: "EB Garamond", Georgia, serif; font-weight: 500; font-variant-numeric: lining-nums; }
+.kicker { font-size: 14px; letter-spacing: .26em; padding-left: .26em; }
+.hero .marca, footer .marca { font-size: 13px; letter-spacing: .38em; padding-left: .38em; }
+.hero .data { font-size: 15px; letter-spacing: .22em; color: #e0bf82; text-shadow: 0 1px 10px rgba(0,0,0,.9), 0 0 2px rgba(0,0,0,.8); }
+.versao .quem, .marco .dia, .parte .pint span { font-size: 13px; letter-spacing: .18em; }
+.folha .tit, .folha .fim { font-size: 13px; letter-spacing: .16em; }
+.extra b { font-size: 14px; letter-spacing: .18em; }
+.assina .arroba { font-size: 14px; letter-spacing: .2em; }
+.num b small { font-size: .3em; letter-spacing: .12em; }
+.hero .sub, .marco p, .num p { color: #ddd4bf; }
 </style>
 </head>
 <body>
