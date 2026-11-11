@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="aguardando">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Joana d’Arc · Lectio Sacra</title>
+<meta name="description" content="A santa que a Igreja condenou e a Igreja absolveu: a vida, o processo e a fogueira de Santa Joana d’Arc contados pelas atas de 1431 e pelos depoimentos da reabilitação. E-book ilustrado de 232 páginas.">
+<meta property="og:title" content="Joana d’Arc · a santa que a Igreja condenou e a Igreja absolveu">
+<meta property="og:description" content="O que ela disse aos juízes, o que fizeram com ela na prisão e por que a Igreja anulou a sentença. Pelas atas, não pela lenda.">
+<meta property="og:image" content="https://lectio.korium.co/joana-darc/img/og.jpg">
+<meta property="og:url" content="https://lectio.korium.co/joana-darc/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#12110d">
+<link rel="preload" href="../fonts/CormorantGaramond.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "EB Garamond"; src: url("../fonts/EBGaramond.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("../fonts/EBGaramond-Italic.woff2") format("woff2"); font-weight: 400 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Cormorant"; src: url("../fonts/CormorantGaramond.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
+@font-face { font-family: "Cormorant"; src: url("../fonts/CormorantGaramond-Italic.woff2") format("woff2"); font-weight: 300 700; font-style: italic; font-display: swap; }
+
+/* Lectio Sacra: luz de vela num mosteiro. Quase tudo no escuro, uma luz quente, silêncio na página. */
+:root {
+  --paper: #ebe7dd;   /* cal de parede de mosteiro */
+  --paper-2: #e1dccf;
+  --ink: #1e1c17;
+  --muted: #6a6457;
+  --gold: #a5783a;    /* chama de vela */
+  --gold-light: #d2ad6c;
+  --flame: #f2c879;
+  --cream: #efe8d6;
+  --title: #2b2820;
+  --night: #12110d;
+  --night-2: #1a1813;
+  --line: rgba(165,120,58,.38);
+  --border: #cbc3b0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: "EB Garamond", Georgia, serif; font-size: 19px; line-height: 1.6; color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 22px; }
+.larga { max-width: 1080px; }
+section { padding: 92px 0; position: relative; }
+p + p { margin-top: .9em; }
+
+/* tipografia */
+.kicker { font-family: "Cormorant"; font-weight: 600; font-size: 13px; letter-spacing: .42em; padding-left: .42em; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 14px; }
+h2 { font-family: "Cormorant"; font-weight: 500; font-size: clamp(31px, 6.4vw, 48px); line-height: 1.08; text-align: center; color: var(--title); text-wrap: balance; }
+h3 { font-family: "Cormorant"; font-weight: 600; font-size: 22px; line-height: 1.2; }
+/* a chama no lugar da cruz: um ponto de luz */
+.chama { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 26px auto 38px; }
+.chama::before, .chama::after { content: ""; width: 54px; border-top: 1px solid var(--line); }
+.chama span { width: 6px; height: 6px; border-radius: 50%; background: var(--flame); box-shadow: 0 0 14px 4px rgba(242,180,90,.45), 0 0 3px 1px rgba(255,225,160,.9); }
+
+.rv { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; }
+.rv.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+.lista { list-style: none; }
+.lista li { position: relative; padding-left: 22px; margin-top: 10px; }
+.lista li::before { content: ""; position: absolute; left: 4px; top: .66em; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+.lista.vazado li::before { background: none; border: 1px solid var(--muted); }
+
+/* botão: âmbar de vela */
+.cta { display: block; width: 100%; max-width: 420px; margin: 0 auto; padding: 18px 24px; text-align: center; text-decoration: none;
+  font-family: "Cormorant"; font-weight: 700; font-size: 19px; letter-spacing: .16em; text-transform: uppercase; color: #1b1810;
+  background: linear-gradient(180deg, #e2b56b, #c08f45); border: 1px solid #f0cf8f; border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(18,17,13,.6), 0 14px 38px -10px rgba(226,170,90,.55); transition: transform .2s, box-shadow .2s; }
+.cta:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(18,17,13,.6), 0 18px 46px -10px rgba(226,170,90,.75); }
+.nota { margin-top: 14px; text-align: center; font-size: 15.5px; color: var(--muted); }
+.preco { transition: opacity .3s; }
+.aguardando .preco { opacity: 0; }
+
+/* ---------- topo ---------- */
+.hero { min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; padding: 0; color: #e4dcc8; background: var(--night) url("img/fundo.webp") center 20% / cover; overflow: hidden; }
+@media (max-width: 700px) { .hero { background-image: url("img/fundo-m.webp"); background-position: 50% 0; background-size: 100% auto; background-repeat: no-repeat; } }
+.hero::before { content: ""; position: absolute; inset: 0; background:
+  radial-gradient(ellipse 70% 55% at 50% 30%, rgba(18,17,13,.05) 0%, rgba(18,17,13,.5) 60%, rgba(18,17,13,.9) 100%),
+  linear-gradient(to bottom, rgba(18,17,13,.55) 0%, rgba(18,17,13,.15) 20%, rgba(18,17,13,.55) 44%, rgba(18,17,13,.94) 64%, var(--night) 100%); }
+.hero .marca { position: absolute; top: 32px; left: 0; right: 0; z-index: 2; font-family: "Cormorant"; font-weight: 600; font-size: 12px; letter-spacing: .6em; padding-left: .6em; color: var(--gold-light); text-align: center; }
+.hero .wrap { position: relative; z-index: 2; max-width: 980px; padding-top: 110px; padding-bottom: 40px; text-align: center; }
+.hero .data { font-family: "Cormorant"; font-weight: 600; font-size: 14px; letter-spacing: .36em; padding-left: .36em; color: var(--gold-light); }
+.hero h1 { margin-top: 14px; font-family: "Cormorant"; font-weight: 500; font-size: clamp(36px, 7.4vw, 66px); line-height: 1.02; color: var(--cream); text-wrap: balance; text-shadow: 0 2px 24px rgba(0,0,0,.7); }
+.hero h1 em { display: block; margin-top: 8px; font-style: italic; font-weight: 400; font-size: .62em; color: var(--gold-light); }
+.hero .sub { margin: 20px auto 0; max-width: 640px; font-size: clamp(18px, 2.4vw, 21px); line-height: 1.5; color: #d3cab4; text-wrap: pretty; }
+.hero .produto { margin: 30px auto 0; display: flex; gap: 22px; align-items: center; justify-content: center; text-align: left; }
+.hero .produto img { width: 112px; flex: none; transform: rotate(-3deg); box-shadow: 0 16px 34px rgba(0,0,0,.8), 0 0 0 1px rgba(210,173,108,.3); }
+.hero .produto .lista { font-size: 17px; color: #ddd4bf; }
+.hero .produto .lista li { margin-top: 5px; } .hero .produto .lista li:first-child { margin-top: 0; }
+.hero .valor { margin: 30px 0 18px; font-family: "Cormorant"; color: var(--cream); }
+.hero .valor b { font-size: 44px; font-weight: 600; }
+.hero .valor .obs { font-family: "EB Garamond"; font-size: 16px; color: #ab9f86; margin-left: 8px; }
+.hero .nota { color: #ab9f86; }
+.hero .rolar { margin-top: 30px; font-family: "Cormorant"; font-weight: 600; font-size: 12px; letter-spacing: .45em; color: rgba(210,173,108,.6); }
+.hero .rolar::after { content: ""; display: block; width: 1px; height: 34px; margin: 10px auto 0; background: linear-gradient(var(--gold-light), transparent); animation: desce 2.4s ease-in-out infinite; }
+@keyframes desce { 0%,100% { transform: scaleY(.4); transform-origin: top; opacity: .4; } 50% { transform: scaleY(1); opacity: 1; } }
+/* desktop: a pintura à direita, o texto à esquerda, para o título não cobrir o rosto */
+@media (min-width: 960px) {
+  .hero { background-image: none; align-items: center; }
+  /* a pintura num pseudo-elemento com a borda esquerda dissolvida no escuro (sem emenda em nenhuma largura) */
+  .hero::after { content: ""; position: absolute; top: 0; right: -60px; height: 112%; aspect-ratio: 2000 / 2696; z-index: 0;
+    background: url("img/fundo.webp") center / cover no-repeat;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 45%); mask-image: linear-gradient(to right, transparent 0%, #000 45%); }
+  .hero::before { z-index: 1; background:
+    linear-gradient(to right, var(--night) 0%, rgba(18,17,13,.9) 36%, rgba(18,17,13,.35) 62%, rgba(18,17,13,.1) 100%),
+    linear-gradient(to bottom, rgba(18,17,13,.3) 0%, rgba(18,17,13,0) 30%, rgba(18,17,13,0) 70%, rgba(18,17,13,.85) 100%); }
+  .hero h1 { font-size: clamp(44px, 4.6vw, 62px); }
+  .hero .produto { margin-top: 24px; }
+  .hero .valor { margin: 22px 0 14px; }
+  .hero .marca { text-align: left; left: max(48px, calc((100vw - 1180px) / 2)); }
+  .hero .wrap { margin: 0 0 0 max(48px, calc((100vw - 1180px) / 2)); max-width: 600px; padding: 92px 0 48px; text-align: left; }
+  .hero .data { padding-left: 0; }
+  .hero .sub { margin-left: 0; }
+  .hero .produto { justify-content: flex-start; }
+  .hero .cta { margin: 0; }
+  .hero .nota { text-align: left; max-width: 420px; text-align: center; }
+  .hero .rolar { display: none; }
+}
+@media (max-width: 700px) { .hero .wrap { padding-top: 46vh; padding-bottom: 30px; } .hero .produto { margin-top: 22px; } .hero .produto img { width: 92px; } .hero .produto .lista { font-size: 16px; } .hero .valor { margin: 20px 0 14px; } .hero .rolar { display: none; } }
+
+/* ---------- paradoxo ---------- */
+.versoes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 640px) { .versoes { grid-template-columns: 1fr; } }
+.versao { padding: 28px 24px 26px; background: var(--paper-2); border: 1px solid var(--border); }
+.versao .ano { font-family: "Cormorant"; font-weight: 500; font-size: 52px; line-height: 1; color: var(--title); }
+.versao .quem { margin-top: 6px; font-family: "Cormorant"; font-weight: 700; font-size: 12.5px; letter-spacing: .3em; color: var(--gold); text-transform: uppercase; }
+.versao blockquote { margin-top: 14px; font-family: "Cormorant"; font-style: italic; font-weight: 500; font-size: 24px; line-height: 1.25; color: var(--ink); }
+.versao p { margin-top: 12px; font-size: 17.5px; color: var(--muted); }
+.veredito { margin-top: 34px; font-size: 20px; }
+
+/* ---------- escuras ---------- */
+.escura { background: var(--night); color: #e4dcc8; }
+.escura h2 { color: var(--cream); }
+.escura .kicker { color: var(--gold-light); }
+.escura .nota, .escura .legenda { color: #ab9f86; }
+.numeros { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(210,173,108,.22); border-left: 1px solid rgba(210,173,108,.22); }
+@media (max-width: 860px) { .numeros { grid-template-columns: 1fr 1fr; } }
+.num { padding: 30px 22px 28px; border-right: 1px solid rgba(210,173,108,.22); border-bottom: 1px solid rgba(210,173,108,.22); }
+.num b { display: block; font-family: "Cormorant"; font-weight: 500; font-size: clamp(46px, 9vw, 66px); line-height: 1; color: var(--cream); }
+.num b small { font-size: .36em; font-weight: 600; letter-spacing: .14em; margin-left: 6px; color: var(--gold-light); }
+.num p { margin-top: 14px; font-size: 16.5px; line-height: 1.45; color: #c7bda6; }
+@media (max-width: 420px) { .num { padding: 24px 16px 22px; } .num p { font-size: 15.5px; } }
+
+/* ---------- trecho ---------- */
+.trecho { background: var(--paper-2); }
+.folha { display: grid; grid-template-columns: 210px 1fr; gap: 32px; background: var(--paper); border: 1px solid var(--border); padding: 38px 34px 32px; box-shadow: 0 30px 60px -40px rgba(30,28,23,.55); }
+@media (max-width: 680px) { .folha { grid-template-columns: 1fr; padding: 30px 22px 26px; } .folha figure { max-width: 220px; margin: 0 auto; } }
+.folha figcaption { margin-top: 8px; font-size: 13.5px; line-height: 1.35; color: var(--muted); font-style: italic; text-align: center; }
+.folha .tit { font-family: "Cormorant"; font-weight: 700; font-size: 13px; letter-spacing: .32em; color: var(--gold); margin-bottom: 14px; }
+.folha p { font-size: 18px; text-align: justify; hyphens: auto; }
+.folha .capitular::first-letter { float: left; font-family: "Cormorant"; font-weight: 500; font-size: 66px; line-height: .78; padding: 6px 8px 0 0; color: var(--gold); }
+.folha .fim { margin-top: 20px; font-family: "Cormorant"; font-weight: 600; font-size: 12px; letter-spacing: .24em; color: var(--muted); text-align: right; }
+
+/* ---------- linha do tempo ---------- */
+.tempo { background: var(--night-2); color: #e4dcc8; overflow: hidden; }
+.tempo h2 { color: var(--cream); } .tempo .kicker { color: var(--gold-light); }
+.trilho { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px max(22px, calc((100vw - 1080px) / 2)) 26px; scrollbar-width: thin; scrollbar-color: var(--gold) transparent; }
+.trilho::-webkit-scrollbar { height: 4px; } .trilho::-webkit-scrollbar-thumb { background: var(--gold); }
+.marco { flex: none; width: 260px; scroll-snap-align: start; padding: 22px 20px; border: 1px solid rgba(210,173,108,.24); background: linear-gradient(180deg, rgba(210,173,108,.06), transparent 60%); position: relative; }
+.marco::before { content: ""; position: absolute; top: -1px; left: 20px; width: 40px; border-top: 2px solid var(--gold-light); }
+.marco .ano { font-family: "Cormorant"; font-weight: 500; font-size: 40px; color: var(--cream); line-height: 1; }
+.marco .dia { font-family: "Cormorant"; font-weight: 700; font-size: 12px; letter-spacing: .22em; color: var(--gold-light); margin-top: 8px; text-transform: uppercase; }
+.marco p { margin-top: 12px; font-size: 16.5px; line-height: 1.45; color: #d0c6ae; }
+.marco img { width: 64px; height: 80px; object-fit: cover; object-position: top; float: right; margin: 0 0 6px 12px; border: 1px solid rgba(210,173,108,.4); }
+.marco.luz { border-color: rgba(242,200,121,.55); box-shadow: 0 0 40px -18px rgba(242,180,90,.5) inset; }
+.marco.luz .ano { color: var(--flame); }
+.dica { text-align: center; font-size: 15px; font-style: italic; color: #92876f; }
+
+/* ---------- partes ---------- */
+.partes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 760px) { .partes { grid-template-columns: 1fr; } }
+.parte { background: var(--paper-2); border: 1px solid var(--border); overflow: hidden; }
+.parte .pint { position: relative; height: 180px; background-size: cover; background-position: center 25%; }
+.parte .pint::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(18,17,13,.05), rgba(18,17,13,.82)); }
+.parte .pint span { position: absolute; left: 22px; bottom: 16px; z-index: 1; font-family: "Cormorant"; font-weight: 700; font-size: 12.5px; letter-spacing: .32em; color: var(--gold-light); }
+.parte .corpo { padding: 20px 22px 24px; }
+.parte h3 { font-size: 26px; font-weight: 500; color: var(--title); }
+.parte .lista { margin-top: 8px; font-size: 17.5px; }
+.parte .lista li { margin-top: 7px; }
+.parte .lista b { font-weight: 600; }
+.extra { margin-top: 20px; padding: 22px; border: 1px dashed var(--gold); text-align: center; font-size: 18px; }
+.extra b { font-family: "Cormorant"; font-weight: 700; font-size: 14px; letter-spacing: .24em; color: var(--gold); }
+
+/* ---------- páginas ---------- */
+.paginas { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 22px 20px; margin: 0 -22px; scrollbar-width: none; }
+.paginas::-webkit-scrollbar { display: none; }
+.paginas img { flex: none; width: 70%; max-width: 300px; scroll-snap-align: center; box-shadow: 0 14px 30px rgba(0,0,0,.6); }
+@media (min-width: 900px) {
+  .paginas { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; margin: 0; padding: 4px 0 6px; }
+  .paginas img { width: 100%; max-width: none; transition: transform .3s; }
+  .paginas img:hover { transform: translateY(-6px); }
+  .so-celular { display: none; }
+}
+.legenda { margin-top: 14px; text-align: center; font-size: 16px; font-style: italic; }
+
+/* ---------- método ---------- */
+.metodo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+@media (max-width: 760px) { .metodo { grid-template-columns: 1fr; gap: 22px; } }
+.metodo div { border-top: 1px solid var(--line); padding-top: 18px; }
+.metodo h3 { color: var(--title); }
+.metodo p { margin-top: 8px; font-size: 17.5px; }
+
+/* ---------- perguntas ---------- */
+.qa { margin-top: 18px; padding: 24px 24px 22px; background: var(--paper); border: 1px solid var(--border); }
+.qa:first-of-type { margin-top: 0; }
+.qa h3 { font-style: italic; font-weight: 500; font-size: 23px; color: var(--title); margin-bottom: 8px; }
+.qa p { font-size: 18px; }
+
+.duas { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+@media (max-width: 620px) { .duas { grid-template-columns: 1fr; } }
+.duas h3 { font-size: 24px; color: var(--title); }
+.duas .lista { font-size: 18px; margin-top: 6px; }
+
+/* ---------- assinatura ---------- */
+.assina { text-align: center; }
+.assina p { font-size: 19px; }
+.assina .arroba { margin-top: 18px; font-family: "Cormorant"; font-weight: 700; font-size: 14px; letter-spacing: .3em; }
+.assina .arroba a { color: var(--gold); text-decoration: none; }
+
+/* ---------- oferta ---------- */
+.oferta { background: var(--night) url("img/fundo-oferta.webp") center / cover; }
+.oferta::before { content: ""; position: absolute; inset: 0; background: rgba(14,13,10,.9); }
+.oferta .wrap { position: relative; }
+.caixa { border: 1px solid rgba(210,173,108,.5); padding: 42px 26px 34px; background: rgba(20,19,15,.78); text-align: center; backdrop-filter: blur(3px); }
+.caixa > img { width: 150px; margin: 0 auto 26px; box-shadow: 0 14px 30px rgba(0,0,0,.8), 0 0 0 1px rgba(210,173,108,.3); }
+.caixa .lista { text-align: left; max-width: 440px; margin: 0 auto; }
+.caixa .lista li { margin: 0; padding-top: 11px; padding-bottom: 11px; border-bottom: 1px solid rgba(210,173,108,.14); font-size: 18px; }
+.caixa .lista li::before { top: 1.32em; }
+.valor-grande { margin: 30px 0 22px; }
+.valor-grande b { font-family: "Cormorant"; font-weight: 500; font-size: 68px; color: var(--cream); line-height: 1; }
+.valor-grande b small { font-size: 24px; vertical-align: 28px; margin-right: 4px; }
+.valor-grande p { margin-top: 10px; font-size: 16px; color: #ab9f86; }
+.junto { margin: 26px auto 0; max-width: 460px; padding: 16px 18px; border: 1px dashed rgba(210,173,108,.45); font-size: 16.5px; color: #cfc5ad; text-align: left; }
+.junto b { color: var(--cream); font-weight: 600; }
+.garantia { margin-top: 30px; display: flex; gap: 18px; align-items: center; text-align: left; }
+.garantia .selo { flex: none; width: 64px; height: 64px; border: 1px solid var(--gold); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: "Cormorant"; color: var(--gold-light); line-height: 1; }
+.garantia .selo b { font-size: 26px; font-weight: 600; } .garantia .selo span { font-size: 9px; font-weight: 700; letter-spacing: .2em; margin-top: 3px; }
+.garantia p { font-size: 16.5px; color: #cfc5ad; }
+
+/* ---------- faq ---------- */
+details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+details:first-of-type { border-top: 1px solid var(--line); }
+summary { cursor: pointer; list-style: none; font-family: "Cormorant"; font-weight: 600; font-size: 21px; padding-right: 30px; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 2px; top: -3px; font-size: 26px; color: var(--gold); transition: transform .25s; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { margin-top: 10px; font-size: 18px; }
+.final { margin-top: 52px; }
+
+footer { background: var(--night); color: #857b66; text-align: center; padding: 40px 22px 110px; font-size: 14px; line-height: 1.8; }
+footer .marca { font-family: "Cormorant"; font-weight: 600; letter-spacing: .55em; padding-left: .55em; color: var(--gold-light); font-size: 13px; margin-bottom: 8px; }
+footer a { color: #ab9f86; }
+
+/* barra fixa no celular */
+.barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: flex; align-items: center; gap: 14px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: rgba(18,17,13,.95); border-top: 1px solid rgba(210,173,108,.3); backdrop-filter: blur(8px); transform: translateY(110%); transition: transform .35s ease; }
+.barra.on { transform: none; }
+.barra .t { flex: 1; min-width: 0; color: #e4dcc8; line-height: 1.2; }
+.barra .t b { display: block; font-family: "Cormorant"; font-weight: 600; font-size: 18px; color: var(--cream); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.barra .t span { font-size: 14px; color: #ab9f86; }
+.barra .cta { width: auto; margin: 0; padding: 11px 18px; font-size: 15px; box-shadow: none; white-space: nowrap; }
+@media (min-width: 900px) { .barra { display: none; } footer { padding-bottom: 44px; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="marca">LECTIO SACRA</p>
+  <div class="wrap">
+    <p class="data">ROUEN · 30 · V · 1431</p>
+    <h1>Um tribunal da Igreja a mandou para a fogueira. <em>Outro tribunal da Igreja a absolveu.</em></h1>
+    <p class="sub">A vida, o processo e a morte de Santa Joana d’Arc, contados pelas atas de 1431 e pelos depoimentos que, 25 anos depois, levaram a Igreja a declarar a sentença nula.</p>
+    <div class="produto">
+      <img src="img/capa.webp" width="112" height="159" alt="Capa do e-book Joana d’Arc">
+      <ul class="lista">
+        <li>E-book ilustrado em PDF</li>
+        <li>232 páginas, cerca de 40 pinturas e iluminuras</li>
+        <li>As frases dela: as verdadeiras e as falsas</li>
+        <li>Acesso imediato</li>
+      </ul>
+    </div>
+    <p class="valor preco"><b>R$ <span data-price>27</span></b><span class="obs">pagamento único</span></p>
+    <a class="cta" href="#oferta" data-checkout>Quero o e-book</a>
+    <p class="nota">7 dias de garantia · Pix ou cartão</p>
+    <p class="rolar">ROLE</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="kicker rv">O paradoxo</p>
+    <h2 class="rv">A santa que a Igreja condenou e a Igreja absolveu</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="versoes">
+      <div class="versao rv">
+        <p class="ano">1431</p>
+        <p class="quem">Rouen · condenada</p>
+        <blockquote>“Herege relapsa.”</blockquote>
+        <p>Um tribunal presidido por um bispo aliado dos ingleses, custeado pelos ingleses, com a ré presa num castelo e guardada por soldados, quando o direito da Igreja mandava prisão eclesiástica e guarda de mulheres. Ela pediu para ser levada ao Papa. Não foi.</p>
+      </div>
+      <div class="versao rv">
+        <p class="ano">1456</p>
+        <p class="quem">Rouen · absolvida</p>
+        <blockquote>“Nulos, inválidos, írritos e vãos.”</blockquote>
+        <p>Três prelados nomeados pelo Papa Calisto III e o inquisidor-geral da França reabriram a causa, ouviram as testemunhas que ainda viviam e anularam o processo e a condenação por dolo, calúnia e erro de direito e de fato.</p>
+      </div>
+    </div>
+    <div class="veredito rv">
+      <p>Desde o século XVIII, os inimigos da fé contam essa história como prova de que a Igreja queimou uma inocente e depois, envergonhada, fez dela uma santa.</p>
+      <p>Os documentos mostram outra coisa, mais incômoda e, para quem ama a Igreja, mais instrutiva: <strong>um tribunal que serviu a um poder político</strong>, e a própria Igreja, pela via regular do recurso a Roma, desfazendo a obra dele. Este livro conta essa história inteira, sem esconder nada e sem inventar nada.</p>
+    </div>
+  </div>
+</section>
+
+<section class="escura">
+  <div class="wrap larga">
+    <p class="kicker rv">Quatro números desta história</p>
+    <h2 class="rv">O que as atas guardaram</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="numeros rv">
+      <div class="num"><b>13<small>ANOS</small></b><p>A idade dela, num verão de 1425, quando ouviu a primeira voz no jardim do pai, em Domrémy.</p></div>
+      <div class="num"><b>10<small>MIL</small></b><p>Libras: o preço pelo qual foi vendida aos ingleses, em novembro de 1430, depois de capturada em Compiègne.</p></div>
+      <div class="num"><b>19<small>ANOS</small></b><p>Mais ou menos a idade que tinha quando foi queimada viva na praça do Velho Mercado de Rouen.</p></div>
+      <div class="num"><b>1920</b><p>O ano em que Bento XV a inscreveu no catálogo dos santos. O Martirológio diz que foi condenada “por juízo iníquo”.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="trecho">
+  <div class="wrap">
+    <p class="kicker rv">Um trecho do livro</p>
+    <h2 class="rv">O vestido que sumiu</h2>
+    <div class="chama rv"><span></span></div>
+    <article class="folha rv">
+      <figure>
+        <img src="img/parte3.webp" width="480" height="640" loading="lazy" alt="Joana d’Arc, doente, interrogada na prisão">
+        <figcaption>Joana, doente, interrogada na prisão pelo cardeal de Winchester. Paul Delaroche, 1824 (cena imaginada).</figcaption>
+      </figure>
+      <div>
+        <p class="tit">DOMINGO DA TRINDADE, 27 DE MAIO DE 1431</p>
+        <p class="capitular">Três dias depois de abjurar e vestir a roupa de mulher que os juízes lhe ofereceram, Joana acordou acorrentada à cama, com cinco soldados ingleses de guarda, três dentro do quarto. Pediu que a soltassem para se levantar. Um deles lhe tirou a roupa de mulher, esvaziou o saco onde estava guardado o traje de homem e o jogou em cima dela: “Levanta-te”.</p>
+        <p>Ela recusou, porque sabia que aquilo lhe era proibido, e a discussão durou até o meio-dia, quando já não podia mais esperar. No dia seguinte, os juízes a declararam relapsa. Na quarta-feira, ela foi para a fogueira.</p>
+        <p>O livro mostra de onde vem cada detalhe, porque a tradução inglesa que se usa até hoje omite o motivo, e o que as testemunhas contaram sobre algo mais grave do que um vestido escondido.</p>
+        <p class="fim">PARTE III · O PROCESSO DE ROUEN</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="tempo">
+  <div class="wrap">
+    <p class="kicker rv">Linha do tempo</p>
+    <h2 class="rv">De Domrémy aos altares</h2>
+    <div class="chama rv"><span></span></div>
+  </div>
+  <div class="trilho rv">
+    <div class="marco"><p class="ano">1412</p><p class="dia">Domrémy</p><p>Nasce Joana, filha de um lavrador, na fronteira da Lorena, no meio de uma guerra civil.</p></div>
+    <div class="marco"><p class="ano">1425</p><p class="dia">Verão</p><p>A primeira voz, no jardim do pai. Ela tinha uns treze anos.</p></div>
+    <div class="marco"><p class="ano">1429</p><p class="dia">Fevereiro · Chinon</p><p>Onze dias a cavalo, em roupa de homem, até o Delfim. Depois, o exame dos teólogos em Poitiers.</p></div>
+    <div class="marco"><img src="img/fauquembergue.webp" alt="Desenho de Joana por Clément de Fauquembergue" loading="lazy"><p class="ano">1429</p><p class="dia">8 de maio · Orléans</p><p>Os ingleses levantam o cerco. Dois dias depois, um escrivão de Paris a desenha na margem de um registro.</p></div>
+    <div class="marco"><p class="ano">1429</p><p class="dia">17 de julho · Reims</p><p>Carlos VII é sagrado rei. O estandarte dela está na catedral.</p></div>
+    <div class="marco"><p class="ano">1430</p><p class="dia">23 de maio · Compiègne</p><p>Capturada numa surtida. Em novembro, é vendida aos ingleses.</p></div>
+    <div class="marco"><p class="ano">1431</p><p class="dia">Janeiro a maio · Rouen</p><p>O processo: dezenas de sessões, setenta artigos de acusação reduzidos a doze, a ameaça de tortura.</p></div>
+    <div class="marco"><p class="ano">1431</p><p class="dia">30 de maio</p><p>Confissão, comunhão e a fogueira no Velho Mercado. As cinzas são lançadas ao Sena.</p></div>
+    <div class="marco luz"><p class="ano">1456</p><p class="dia">7 de julho</p><p>Por ordem de Roma, a sentença é declarada nula na mesma cidade.</p></div>
+    <div class="marco luz"><p class="ano">1909</p><p class="dia">São Pio X</p><p>Joana é declarada beata.</p></div>
+    <div class="marco luz"><p class="ano">1920</p><p class="dia">16 de maio · Bento XV</p><p>Santa Joana d’Arc.</p></div>
+  </div>
+  <p class="dica so-celular">Arraste para o lado →</p>
+</section>
+
+<section>
+  <div class="wrap larga">
+    <p class="kicker rv">O que tem dentro</p>
+    <h2 class="rv">Quatro partes, da aldeia à glória</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="partes">
+      <div class="parte rv">
+        <div class="pint" style="background-image:url('img/parte1.webp')"><span>PARTE I</span></div>
+        <div class="corpo">
+          <h3>A menina de Domrémy</h3>
+          <ul class="lista">
+            <li>Um reino que já não tinha rei</li>
+            <li>A filha do lavrador</li>
+            <li><b>As vozes, segundo ela mesma</b>: o que disse aos juízes sobre São Miguel, Santa Catarina e Santa Margarida</li>
+          </ul>
+        </div>
+      </div>
+      <div class="parte rv">
+        <div class="pint" style="background-image:url('img/parte2.webp')"><span>PARTE II</span></div>
+        <div class="corpo">
+          <h3>A Donzela de Orléans</h3>
+          <ul class="lista">
+            <li>Vaucouleurs e a estrada de Chinon</li>
+            <li>Chinon e o exame de Poitiers</li>
+            <li><b>Orléans: oito dias de maio</b></li>
+            <li>Reims: a sagração do rei</li>
+            <li>Paris, Compiègne e a captura</li>
+          </ul>
+        </div>
+      </div>
+      <div class="parte rv">
+        <div class="pint" style="background-image:url('img/parte3.webp')"><span>PARTE III</span></div>
+        <div class="corpo">
+          <h3>O processo de Rouen</h3>
+          <ul class="lista">
+            <li>Vendida por dez mil libras</li>
+            <li>Um bispo, um vice-inquisidor e um tribunal inglês</li>
+            <li><b>“Se não estou, que Deus me ponha”</b></li>
+            <li>A abjuração de Saint-Ouen</li>
+            <li><b>O vestido que sumiu</b></li>
+            <li>“Bispo, morro por vossa causa”</li>
+          </ul>
+        </div>
+      </div>
+      <div class="parte rv">
+        <div class="pint" style="background-image:url('img/parte4.webp')"><span>PARTE IV</span></div>
+        <div class="corpo">
+          <h3>A fogueira e a glória</h3>
+          <ul class="lista">
+            <li>“Jesus!”: a fogueira de Rouen</li>
+            <li>O coração que não queimou</li>
+            <li><b>A Igreja anula a sentença</b></li>
+            <li>De condenada a santa</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="extra rv"><b>E NOS APÊNDICES</b><br>Curiosidades (a espada achada atrás de um altar, um fio de cabelo no lacre de uma carta, a falsa Joana que enganou Orléans), as frases verdadeiras e as falsas, a linha do tempo completa e as fontes.</div>
+  </div>
+</section>
+
+<section class="escura">
+  <div class="wrap larga">
+    <p class="kicker rv">Por dentro do livro</p>
+    <h2 class="rv">Feito para ler e para guardar</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="paginas rv">
+      <img src="img/pag-105.webp" width="642" height="908" loading="lazy" alt="Abertura da Parte III, O processo de Rouen">
+      <img src="img/pag-128.webp" width="642" height="908" loading="lazy" alt="Página com o texto original das atas">
+      <img src="img/pag-172.webp" width="642" height="908" loading="lazy" alt="Página ilustrada sobre a fogueira de Rouen">
+      <img src="img/pag-40.webp" width="642" height="908" loading="lazy" alt="Abertura da Parte II, A Donzela de Orléans">
+      <img src="img/pag-197.webp" width="642" height="908" loading="lazy" alt="Página ilustrada sobre a canonização">
+      <img src="img/pag-216.webp" width="642" height="908" loading="lazy" alt="Frases verdadeiras e frases falsas">
+      <img src="img/pag-221.webp" width="642" height="908" loading="lazy" alt="Linha do tempo">
+      <img src="img/pag-3.webp" width="642" height="908" loading="lazy" alt="Sumário">
+    </div>
+    <p class="legenda"><span class="so-celular">Arraste para ver mais páginas. </span>Iluminuras do século XV, pinturas de Ingres a Rossetti e as palavras de Joana no latim e no francês das atas, com a tradução.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap larga">
+    <p class="kicker rv">Como foi feito</p>
+    <h2 class="rv">Pelas atas, não pela lenda</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="metodo">
+      <div class="rv"><h3>As palavras dela</h3><p>Joana foi interrogada durante meses, e cada resposta ficou registrada. O livro cita as atas do processo e os depoimentos da reabilitação, na edição de Quicherat, com o original ao lado da tradução.</p></div>
+      <div class="rv"><h3>Mito marcado como mito</h3><p>A espada de Carlos Martel, frases que circulam em cartões e redes sociais, o “retrato verdadeiro”: quando não há documento, o livro diz.</p></div>
+      <div class="rv"><h3>Fiel à Igreja, sem esconder nada</h3><p>Quem a condenou foi um bispo católico. Quem a absolveu foi a Igreja. As duas coisas são verdade e o livro explica as duas, com cuidado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--paper-2);">
+  <div class="wrap">
+    <p class="kicker rv">Talvez você esteja pensando</p>
+    <h2 class="rv">Algumas perguntas honestas</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="qa rv">
+      <h3>“Então a Igreja queimou uma santa?”</h3>
+      <p>Um tribunal eclesiástico local, a serviço dos ingleses e contra as regras do próprio direito da Igreja, a condenou. A Igreja, pela via de Roma, anulou a sentença. O livro mostra quem fez o quê, com nome, data e documento, para você saber responder quando ouvir a acusação.</p>
+    </div>
+    <div class="qa rv">
+      <h3>“232 páginas não é muito?”</h3>
+      <p>Os capítulos são curtos e se leem como uma história, em ordem, da aldeia à canonização. Dá para ler uma parte por vez, e as páginas são cheias de imagens. Os apêndices ficam para consultar quando quiser.</p>
+    </div>
+    <div class="qa rv">
+      <h3>“Já sei a história de Joana d’Arc.”</h3>
+      <p>Você provavelmente sabe a versão que circula. Muita gente não sabe por que ela voltou a vestir roupa de homem, o que disse ao bispo no dia da morte ou quais frases famosas dela são inventadas. Está tudo aqui, com a fonte.</p>
+    </div>
+    <div class="qa rv">
+      <h3>“E se eu não gostar?”</h3>
+      <p>Você tem 7 dias de garantia. Se achar que não valeu, peça o reembolso pela própria plataforma e recebe o valor integral, sem precisar explicar o motivo.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="rv">Para quem é este livro</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="duas">
+      <div class="rv">
+        <h3>É para você se…</h3>
+        <ul class="lista">
+          <li>tem devoção a Santa Joana d’Arc e quer conhecê-la de verdade</li>
+          <li>já ouviu que “a Igreja queimou uma santa” e quer saber o que aconteceu</li>
+          <li>gosta de história da Igreja contada com documentos</li>
+          <li>quer um bom presente para um católico que gosta de ler</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>Não é para você se…</h3>
+        <ul class="lista vazado">
+          <li>quer uma Joana de lenda, sem fontes</li>
+          <li>procura um tratado acadêmico em notas de rodapé</li>
+          <li>quer um livro impresso (este é digital)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--paper-2); padding: 70px 0;">
+  <div class="wrap assina rv">
+    <p class="kicker">Lectio Sacra</p>
+    <p>A história da Igreja contada pelos documentos, à luz de vela: devagar, com fidelidade e sem medo das partes difíceis.</p>
+    <p class="arroba"><a href="https://www.instagram.com/lectiosacra/">@LECTIOSACRA</a></p>
+  </div>
+</section>
+
+<section class="escura oferta" id="oferta">
+  <div class="wrap">
+    <div class="caixa rv">
+      <img src="img/capa.webp" width="150" height="212" loading="lazy" alt="Capa do e-book">
+      <ul class="lista">
+        <li>E-book completo em PDF, com 232 páginas</li>
+        <li>Quatro partes: Domrémy, Orléans, o processo de Rouen e a glória</li>
+        <li>As palavras de Joana no original das atas, com tradução</li>
+        <li>Cerca de 40 pinturas, iluminuras e fotografias</li>
+        <li>Curiosidades, frases verdadeiras e falsas, linha do tempo</li>
+        <li>Acesso imediato, para ler em qualquer aparelho</li>
+      </ul>
+      <div class="valor-grande preco">
+        <b><small>R$</small><span data-price>27</span></b>
+        <p>pagamento único, no Pix ou no cartão</p>
+      </div>
+      <a class="cta" href="#oferta" data-checkout>Quero o e-book</a>
+      <p class="nota">Você recebe o acesso por e-mail logo após o pagamento.</p>
+      <p class="junto">No checkout, se quiser, você pode acrescentar <b>A Inquisição no Brasil</b> e <b>França, filha primogênita da Igreja</b>, da mesma coleção, por R$ 17 cada.</p>
+      <div class="garantia">
+        <div class="selo"><b>7</b><span>DIAS</span></div>
+        <p>Leia com calma. Se em 7 dias achar que o livro não valeu, peça o reembolso pela plataforma e devolvemos o valor integral.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="rv">Perguntas frequentes</h2>
+    <div class="chama rv"><span></span></div>
+    <details><summary>Como recebo o e-book?</summary><p>Assim que o pagamento é confirmado, você recebe um e-mail com o acesso à área de membros, onde o PDF fica disponível para baixar. No Pix e no cartão, isso costuma levar poucos minutos.</p></details>
+    <details><summary>Consigo ler no celular?</summary><p>Sim. O PDF abre em qualquer celular, tablet ou computador. Se preferir papel, você pode imprimir.</p></details>
+    <details><summary>Preciso saber história para entender?</summary><p>Não. O livro começa explicando a guerra e o reino em que Joana nasceu, e cada personagem é apresentado quando aparece.</p></details>
+    <details><summary>O livro trata das partes violentas?</summary><p>Trata, com sobriedade. O que aconteceu na prisão e na fogueira é contado como as testemunhas contaram, sem exagero e sem esconder.</p></details>
+    <details><summary>Posso dar de presente?</summary><p>Pode. É um bom presente para quem tem devoção a Santa Joana ou gosta de história da Igreja.</p></details>
+    <details><summary>Não recebi o acesso. E agora?</summary><p>Confira a caixa de spam e a aba Promoções do e-mail. Se não encontrar, fale com a gente pelo direct do Instagram <a href="https://www.instagram.com/lectiosacra/">@lectiosacra</a>.</p></details>
+    <div class="final">
+      <a class="cta" href="#oferta" data-checkout>Quero o e-book</a>
+      <p class="nota preco">R$ <span data-price>27</span> · acesso imediato · 7 dias de garantia</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="marca">LECTIO SACRA</p>
+  <p>Contato: direct do Instagram <a href="https://www.instagram.com/lectiosacra/">@lectiosacra</a></p>
+  <p><a href="../privacidade.html">Política de privacidade</a> · © 2026 Lectio Sacra</p>
+</footer>
+
+<div class="barra" aria-hidden="true">
+  <div class="t"><b>Joana d’Arc</b><span class="preco">R$ <span data-price>27</span> · 7 dias de garantia</span></div>
+  <a class="cta" href="#oferta" data-checkout tabindex="-1">Quero</a>
+</div>
+
+<script>
+  // Teste A/B de preço (planilha "Lectio · teste Joana"; código em lectio-sacra/venda/teste-ab/joana-darc.gs).
+  // A planilha escolhe a variante de cada visitante, mandando mais gente para a que mais fatura por visita.
+  // A escolha fica guardada no navegador por 7 dias. ?v=a|b|c|d força uma variante, sem contar visita.
+  // ?angulo=xxx segue para a Hubla como utm_content, para separar as vendas por anúncio.
+  const API = "https://script.google.com/macros/s/AKfycbywPaDCoF57bSis76cg7sY4He7JydmiofjsR4HS93CGORYSXWhhWKWxsR8YEkhmSEzcQA/exec";
+  const PADRAO = { id: "b", preco: 27, checkout: "https://pay.hub.la/1om5Sk8IwoHDhNjVipB0" };
+  const CHAVE = "lectio-joana-variante";
+  const SEMANA = 7 * 24 * 3600 * 1000;
+  const params = new URLSearchParams(location.search);
+  const ANGULO = params.get("angulo");
+
+  function aplicar(v) {
+    document.querySelectorAll("[data-price]").forEach(el => el.textContent = v.preco);
+    document.querySelectorAll("[data-checkout]").forEach(a => a.href = v.checkout + (ANGULO ? "?utm_content=" + encodeURIComponent(ANGULO) : ""));
+    document.documentElement.classList.remove("aguardando");
+  }
+
+  function lerSalva() { try { return JSON.parse(localStorage.getItem(CHAVE) || "null"); } catch (e) { return null; } }
+  function salvar(v) { try { localStorage.setItem(CHAVE, JSON.stringify({ v, em: Date.now() })); } catch (e) {} }
+
+  async function escolher() {
+    const forcada = params.get("v");
+    const salva = lerSalva();
+    if (!forcada && salva && Date.now() - salva.em < SEMANA) return salva.v;
+    const ctrl = new AbortController();
+    setTimeout(() => ctrl.abort(), 4000);
+    const r = await fetch(API + "?acao=escolher" + (forcada ? "&v=" + encodeURIComponent(forcada) : ""), { signal: ctrl.signal });
+    const v = await r.json();
+    if (!v.checkout || !v.checkout.startsWith("https://pay.hub.la/")) return PADRAO;
+    if (!forcada) salvar(v);
+    return v;
+  }
+  escolher().then(aplicar).catch(() => aplicar(PADRAO));
+
+  // revelação ao rolar
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+  // barra fixa: aparece depois do topo e some na oferta
+  const barra = document.querySelector(".barra"), hero = document.querySelector(".hero"), oferta = document.getElementById("oferta");
+  let passou = false, naOferta = false;
+  const upd = () => barra.classList.toggle("on", passou && !naOferta);
+  new IntersectionObserver(([e]) => { passou = !e.isIntersecting; upd(); }).observe(hero);
+  new IntersectionObserver(([e]) => { naOferta = e.isIntersecting; upd(); }).observe(oferta);
+</script>
+</body>
+</html>
