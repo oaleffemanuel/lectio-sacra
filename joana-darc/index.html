@@ -300,7 +300,7 @@ body { font-variant-numeric: lining-nums; }
         <li>Acesso imediato</li>
       </ul>
     </div>
-    <p class="valor preco"><b>R$ <span data-price>27</span></b><span class="obs">pagamento único</span></p>
+    <p class="valor preco"><b>R$ <span data-price>14,90</span></b><span class="obs">pagamento único</span></p>
     <a class="cta" href="#oferta" data-checkout>Quero o e-book</a>
     <p class="nota">7 dias de garantia · Pix ou cartão</p>
     <p class="rolar">ROLE</p>
@@ -554,12 +554,12 @@ body { font-variant-numeric: lining-nums; }
         <li>Acesso imediato, para ler em qualquer aparelho</li>
       </ul>
       <div class="valor-grande preco">
-        <b><small>R$</small><span data-price>27</span></b>
+        <b><small>R$</small><span data-price>14,90</span></b>
         <p>pagamento único, no Pix ou no cartão</p>
       </div>
       <a class="cta" href="#oferta" data-checkout>Quero o e-book</a>
       <p class="nota">Você recebe o acesso por e-mail logo após o pagamento.</p>
-      <p class="junto">No checkout, se quiser, você pode acrescentar <b>A Inquisição no Brasil</b> e <b>França, filha primogênita da Igreja</b>, da mesma coleção, por R$ 17 cada.</p>
+      <p class="junto">No checkout, se quiser, você pode acrescentar <b>A Inquisição no Brasil</b> e <b>França, filha primogênita da Igreja</b>, da mesma coleção, por R$ <span data-bump>14,90</span> cada.</p>
       <div class="garantia">
         <div class="selo"><b>7</b><span>DIAS</span></div>
         <p>Leia com calma. Se em 7 dias achar que o livro não valeu, peça o reembolso pela plataforma e devolvemos o valor integral.</p>
@@ -580,7 +580,7 @@ body { font-variant-numeric: lining-nums; }
     <details><summary>Não recebi o acesso. E agora?</summary><p>Confira a caixa de spam e a aba Promoções do e-mail. Se não encontrar, fale com a gente pelo direct do Instagram <a href="https://www.instagram.com/lectiosacra/">@lectiosacra</a>.</p></details>
     <div class="final">
       <a class="cta" href="#oferta" data-checkout>Quero o e-book</a>
-      <p class="nota preco">R$ <span data-price>27</span> · acesso imediato · 7 dias de garantia</p>
+      <p class="nota preco">R$ <span data-price>14,90</span> · acesso imediato · 7 dias de garantia</p>
     </div>
   </div>
 </section>
@@ -592,44 +592,21 @@ body { font-variant-numeric: lining-nums; }
 </footer>
 
 <div class="barra" aria-hidden="true">
-  <div class="t"><b>Joana d’Arc</b><span class="preco">R$ <span data-price>27</span> · 7 dias de garantia</span></div>
+  <div class="t"><b>Joana d’Arc</b><span class="preco">R$ <span data-price>14,90</span> · 7 dias de garantia</span></div>
   <a class="cta" href="#oferta" data-checkout tabindex="-1">Quero</a>
 </div>
 
 <script>
-  // Teste A/B de preço (planilha "Lectio · teste Joana"; código em lectio-sacra/venda/teste-ab/joana-darc.gs).
-  // A planilha escolhe a variante de cada visitante, mandando mais gente para a que mais fatura por visita.
-  // A escolha fica guardada no navegador por 7 dias. ?v=a|b|c|d força uma variante, sem contar visita.
-  // ?angulo=xxx segue para a Hubla como utm_content, para separar as vendas por anúncio.
-  const API = "https://script.google.com/macros/s/AKfycbywPaDCoF57bSis76cg7sY4He7JydmiofjsR4HS93CGORYSXWhhWKWxsR8YEkhmSEzcQA/exec";
-  const PADRAO = { id: "b", preco: 27, checkout: "https://pay.hub.la/1om5Sk8IwoHDhNjVipB0" };
-  const CHAVE = "lectio-joana-variante";
-  const SEMANA = 7 * 24 * 3600 * 1000;
-  const params = new URLSearchParams(location.search);
-  const ANGULO = params.get("angulo");
-
-  function aplicar(v) {
-    document.querySelectorAll("[data-price]").forEach(el => el.textContent = v.preco);
-    document.querySelectorAll("[data-checkout]").forEach(a => a.href = v.checkout + (ANGULO ? "?utm_content=" + encodeURIComponent(ANGULO) : ""));
-    document.documentElement.classList.remove("aguardando");
-  }
-
-  function lerSalva() { try { return JSON.parse(localStorage.getItem(CHAVE) || "null"); } catch (e) { return null; } }
-  function salvar(v) { try { localStorage.setItem(CHAVE, JSON.stringify({ v, em: Date.now() })); } catch (e) {} }
-
-  async function escolher() {
-    const forcada = params.get("v");
-    const salva = lerSalva();
-    if (!forcada && salva && Date.now() - salva.em < SEMANA) return salva.v;
-    const ctrl = new AbortController();
-    setTimeout(() => ctrl.abort(), 4000);
-    const r = await fetch(API + "?acao=escolher" + (forcada ? "&v=" + encodeURIComponent(forcada) : ""), { signal: ctrl.signal });
-    const v = await r.json();
-    if (!v.checkout || !v.checkout.startsWith("https://pay.hub.la/")) return PADRAO;
-    if (!forcada) salvar(v);
-    return v;
-  }
-  escolher().then(aplicar).catch(() => aplicar(PADRAO));
+  // Preço fixo desde 18/11/2026 (o teste A/B de preço foi encerrado; agora testamos oferta).
+  // ?angulo=xxx segue para a Hubla como utm_content, para separar as vendas por post/anúncio.
+  const PRECO = "14,90";
+  const BUMP = "14,90";
+  const CHECKOUT = "https://pay.hub.la/Dn8K2SWbBiXDbBYvPFBd";
+  const ANGULO = new URLSearchParams(location.search).get("angulo");
+  document.querySelectorAll("[data-price]").forEach(el => el.textContent = PRECO);
+  document.querySelectorAll("[data-bump]").forEach(el => el.textContent = BUMP);
+  document.querySelectorAll("[data-checkout]").forEach(a => a.href = CHECKOUT + (ANGULO ? "?utm_content=" + encodeURIComponent(ANGULO) : ""));
+  document.documentElement.classList.remove("aguardando");
 
   // revelação ao rolar
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });

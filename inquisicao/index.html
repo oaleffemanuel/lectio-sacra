@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>A Inquisição no Brasil · Lectio Sacra</title>
+<meta name="description" content="A Inquisição sem lenda negra e sem defesa cega: o que o tribunal foi de verdade, quantos condenou e as histórias reais que a gente do Grão-Pará contou ao visitador do Santo Ofício entre 1763 e 1769. E-book ilustrado de 230 páginas.">
+<meta property="og:title" content="A Inquisição no Brasil · histórias reais do Santo Ofício no Grão-Pará">
+<meta property="og:description" content="O Brasil nunca teve tribunal da Inquisição, mas um inquisidor passou seis anos em Belém. O que o povo confessou a ele, contado pelo documento.">
+<meta property="og:image" content="https://lectio.korium.co/inquisicao/img/og.jpg">
+<meta property="og:url" content="https://lectio.korium.co/inquisicao/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#12110d">
+<link rel="preload" href="../fonts/CormorantGaramond.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "EB Garamond"; src: url("../fonts/EBGaramond.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("../fonts/EBGaramond-Italic.woff2") format("woff2"); font-weight: 400 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Cormorant"; src: url("../fonts/CormorantGaramond.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
+@font-face { font-family: "Cormorant"; src: url("../fonts/CormorantGaramond-Italic.woff2") format("woff2"); font-weight: 300 700; font-style: italic; font-display: swap; }
+
+/* Lectio Sacra: luz de vela num mosteiro. Quase tudo no escuro, uma luz quente, silêncio na página. */
+:root {
+  --paper: #ebe7dd;   /* cal de parede de mosteiro */
+  --paper-2: #e1dccf;
+  --ink: #1e1c17;
+  --muted: #575246;
+  --gold: #a5783a;    /* chama de vela */
+  --gold-light: #d2ad6c;
+  --flame: #f2c879;
+  --cream: #efe8d6;
+  --title: #2b2820;
+  --night: #12110d;
+  --night-2: #1a1813;
+  --line: rgba(165,120,58,.38);
+  --border: #cbc3b0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: "EB Garamond", Georgia, serif; font-size: 19px; line-height: 1.6; color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 22px; }
+.larga { max-width: 1080px; }
+section { padding: 92px 0; position: relative; }
+p + p { margin-top: .9em; }
+
+/* tipografia */
+.kicker { font-family: "Cormorant"; font-weight: 600; font-size: 13px; letter-spacing: .42em; padding-left: .42em; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 14px; }
+h2 { font-family: "Cormorant"; font-weight: 500; font-size: clamp(31px, 6.4vw, 48px); line-height: 1.08; text-align: center; color: var(--title); text-wrap: balance; }
+h3 { font-family: "Cormorant"; font-weight: 600; font-size: 22px; line-height: 1.2; }
+/* a chama no lugar da cruz: um ponto de luz */
+.chama { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 26px auto 38px; }
+.chama::before, .chama::after { content: ""; width: 54px; border-top: 1px solid var(--line); }
+.chama span { width: 6px; height: 6px; border-radius: 50%; background: var(--flame); box-shadow: 0 0 14px 4px rgba(242,180,90,.45), 0 0 3px 1px rgba(255,225,160,.9); }
+
+.rv { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; }
+.rv.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+.lista { list-style: none; }
+.lista li { position: relative; padding-left: 22px; margin-top: 10px; }
+.lista li::before { content: ""; position: absolute; left: 4px; top: .66em; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+.lista.vazado li::before { background: none; border: 1px solid var(--muted); }
+
+/* botão: âmbar de vela */
+.cta { display: block; width: 100%; max-width: 420px; margin: 0 auto; padding: 18px 24px; text-align: center; text-decoration: none;
+  font-family: "Cormorant"; font-weight: 700; font-size: 19px; letter-spacing: .16em; text-transform: uppercase; color: #1b1810;
+  background: linear-gradient(180deg, #e2b56b, #c08f45); border: 1px solid #f0cf8f; border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(18,17,13,.6), 0 14px 38px -10px rgba(226,170,90,.55); transition: transform .2s, box-shadow .2s; }
+.cta:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(18,17,13,.6), 0 18px 46px -10px rgba(226,170,90,.75); }
+.nota { margin-top: 14px; text-align: center; font-size: 15.5px; color: var(--muted); }
+.preco { transition: opacity .3s; }
+.aguardando .preco { opacity: 0; }
+
+/* ---------- topo ---------- */
+.hero { position: relative; isolation: isolate; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; padding: 0; color: #e4dcc8; background: var(--night) url("img/fundo.webp") center 20% / cover; overflow: hidden; }
+@media (max-width: 700px) { .hero { background-image: url("img/fundo-m.webp"); background-position: 50% 0; background-size: 100% auto; background-repeat: no-repeat; } }
+.hero::before { content: ""; position: absolute; inset: 0; background:
+  radial-gradient(ellipse 70% 55% at 50% 30%, rgba(18,17,13,.05) 0%, rgba(18,17,13,.5) 60%, rgba(18,17,13,.9) 100%),
+  linear-gradient(to bottom, rgba(18,17,13,.55) 0%, rgba(18,17,13,.15) 20%, rgba(18,17,13,.55) 44%, rgba(18,17,13,.94) 64%, var(--night) 100%); }
+.hero .marca { position: absolute; top: 32px; left: 0; right: 0; z-index: 2; font-family: "Cormorant"; font-weight: 600; font-size: 12px; letter-spacing: .6em; padding-left: .6em; color: var(--gold-light); text-align: center; }
+.hero .wrap { position: relative; z-index: 2; max-width: 980px; padding-top: 110px; padding-bottom: 40px; text-align: center; }
+.hero .data { font-family: "Cormorant"; font-weight: 600; font-size: 14px; letter-spacing: .36em; padding-left: .36em; color: var(--gold-light); }
+.hero h1 { margin-top: 14px; font-family: "Cormorant"; font-weight: 500; font-size: clamp(36px, 7.4vw, 66px); line-height: 1.02; color: var(--cream); text-wrap: balance; text-shadow: 0 2px 24px rgba(0,0,0,.7); }
+.hero h1 em { display: block; margin-top: 8px; font-style: italic; font-weight: 400; font-size: .62em; color: var(--gold-light); }
+.hero .sub { margin: 20px auto 0; max-width: 640px; font-size: clamp(18px, 2.4vw, 21px); line-height: 1.5; color: #d3cab4; text-wrap: pretty; }
+.hero .produto { margin: 30px auto 0; display: flex; gap: 22px; align-items: center; justify-content: center; text-align: left; }
+.hero .produto img { width: 112px; flex: none; transform: rotate(-3deg); box-shadow: 0 16px 34px rgba(0,0,0,.8), 0 0 0 1px rgba(210,173,108,.3); }
+.hero .produto .lista { font-size: 17px; color: #ddd4bf; }
+.hero .produto .lista li { margin-top: 5px; } .hero .produto .lista li:first-child { margin-top: 0; }
+.hero .valor { margin: 30px 0 18px; font-family: "Cormorant"; color: var(--cream); }
+.hero .valor b { font-size: 44px; font-weight: 600; }
+.hero .valor .obs { font-family: "EB Garamond"; font-size: 16px; color: #ab9f86; margin-left: 8px; }
+.hero .nota { color: #ab9f86; }
+.hero .rolar { margin-top: 30px; font-family: "Cormorant"; font-weight: 600; font-size: 12px; letter-spacing: .45em; color: rgba(210,173,108,.6); }
+.hero .rolar::after { content: ""; display: block; width: 1px; height: 34px; margin: 10px auto 0; background: linear-gradient(var(--gold-light), transparent); animation: desce 2.4s ease-in-out infinite; }
+@keyframes desce { 0%,100% { transform: scaleY(.4); transform-origin: top; opacity: .4; } 50% { transform: scaleY(1); opacity: 1; } }
+/* desktop: a pintura à direita, o texto à esquerda, para o título não cobrir o rosto */
+@media (min-width: 960px) {
+  .hero { background-image: none; align-items: center; }
+  /* a pintura num pseudo-elemento com a borda esquerda dissolvida no escuro (sem emenda em nenhuma largura) */
+  .hero::after { content: ""; position: absolute; top: 0; right: -60px; height: 112%; aspect-ratio: 2000 / 3099; z-index: 0;
+    background: url("img/fundo.webp") center / cover no-repeat;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 45%); mask-image: linear-gradient(to right, transparent 0%, #000 45%); }
+  .hero::before { z-index: 1; background:
+    linear-gradient(to right, var(--night) 0%, rgba(18,17,13,.9) 36%, rgba(18,17,13,.35) 62%, rgba(18,17,13,.1) 100%),
+    linear-gradient(to bottom, rgba(18,17,13,.3) 0%, rgba(18,17,13,0) 30%, rgba(18,17,13,0) 70%, rgba(18,17,13,.85) 100%); }
+  .hero h1 { font-size: clamp(44px, 4.6vw, 62px); }
+  .hero .produto { margin-top: 24px; }
+  .hero .valor { margin: 22px 0 14px; }
+  .hero .marca { text-align: left; left: max(48px, calc((100vw - 1180px) / 2)); }
+  .hero .wrap { margin: 0 0 0 max(48px, calc((100vw - 1180px) / 2)); max-width: 600px; padding: 92px 0 48px; text-align: left; }
+  .hero .data { padding-left: 0; }
+  .hero .sub { margin-left: 0; }
+  .hero .produto { justify-content: flex-start; }
+  .hero .cta { margin: 0; }
+  .hero .nota { text-align: left; max-width: 420px; text-align: center; }
+  .hero .rolar { display: none; }
+}
+@media (max-width: 700px) { .hero .wrap { padding-top: 46vh; padding-bottom: 30px; } .hero .produto { margin-top: 22px; } .hero .produto img { width: 92px; } .hero .produto .lista { font-size: 16px; } .hero .valor { margin: 20px 0 14px; } .hero .rolar { display: none; } }
+
+/* ---------- paradoxo ---------- */
+.versoes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 640px) { .versoes { grid-template-columns: 1fr; } }
+.versao { padding: 28px 24px 26px; background: var(--paper-2); border: 1px solid var(--border); }
+.versao .ano { font-family: "Cormorant"; font-weight: 500; font-size: 52px; line-height: 1; color: var(--title); }
+.versao .quem { margin-top: 6px; font-family: "Cormorant"; font-weight: 700; font-size: 12.5px; letter-spacing: .3em; color: var(--gold); text-transform: uppercase; }
+.versao blockquote { margin-top: 14px; font-family: "Cormorant"; font-style: italic; font-weight: 500; font-size: 24px; line-height: 1.25; color: var(--ink); }
+.versao p { margin-top: 12px; font-size: 17.5px; color: var(--muted); }
+.veredito { margin-top: 34px; font-size: 20px; }
+
+/* ---------- escuras ---------- */
+.escura { background: var(--night); color: #e4dcc8; }
+.escura h2 { color: var(--cream); }
+.escura .kicker { color: var(--gold-light); }
+.escura .nota, .escura .legenda { color: #ab9f86; }
+.numeros { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(210,173,108,.22); border-left: 1px solid rgba(210,173,108,.22); }
+@media (max-width: 860px) { .numeros { grid-template-columns: 1fr 1fr; } }
+.num { padding: 30px 22px 28px; border-right: 1px solid rgba(210,173,108,.22); border-bottom: 1px solid rgba(210,173,108,.22); }
+.num b { display: block; font-family: "Cormorant"; font-weight: 500; font-size: clamp(46px, 9vw, 66px); line-height: 1; color: var(--cream); }
+.num b small { font-size: .36em; font-weight: 600; letter-spacing: .14em; margin-left: 6px; color: var(--gold-light); }
+.num p { margin-top: 14px; font-size: 16.5px; line-height: 1.45; color: #c7bda6; }
+@media (max-width: 420px) { .num { padding: 24px 16px 22px; } .num p { font-size: 15.5px; } }
+
+/* ---------- trecho ---------- */
+.trecho { background: var(--paper-2); }
+.folha { display: grid; grid-template-columns: 210px 1fr; gap: 32px; background: var(--paper); border: 1px solid var(--border); padding: 38px 34px 32px; box-shadow: 0 30px 60px -40px rgba(30,28,23,.55); }
+@media (max-width: 680px) { .folha { grid-template-columns: 1fr; padding: 30px 22px 26px; } .folha figure { max-width: 220px; margin: 0 auto; } }
+.folha figcaption { margin-top: 8px; font-size: 13.5px; line-height: 1.35; color: var(--muted); font-style: italic; text-align: center; }
+.folha .tit { font-family: "Cormorant"; font-weight: 700; font-size: 13px; letter-spacing: .32em; color: var(--gold); margin-bottom: 14px; }
+.folha p { font-size: 18px; text-align: justify; hyphens: auto; }
+.folha .capitular::first-letter { float: left; font-family: "Cormorant"; font-weight: 500; font-size: 66px; line-height: .78; padding: 6px 8px 0 0; color: var(--gold); }
+.folha .fim { margin-top: 20px; font-family: "Cormorant"; font-weight: 600; font-size: 12px; letter-spacing: .24em; color: var(--muted); text-align: right; }
+
+/* ---------- linha do tempo ---------- */
+.tempo { background: var(--night-2); color: #e4dcc8; overflow: hidden; }
+.tempo h2 { color: var(--cream); } .tempo .kicker { color: var(--gold-light); }
+.trilho { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px max(22px, calc((100vw - 1080px) / 2)) 26px; scrollbar-width: thin; scrollbar-color: var(--gold) transparent; }
+.trilho::-webkit-scrollbar { height: 4px; } .trilho::-webkit-scrollbar-thumb { background: var(--gold); }
+.marco { flex: none; width: 260px; scroll-snap-align: start; padding: 22px 20px; border: 1px solid rgba(210,173,108,.24); background: linear-gradient(180deg, rgba(210,173,108,.06), transparent 60%); position: relative; }
+.marco::before { content: ""; position: absolute; top: -1px; left: 20px; width: 40px; border-top: 2px solid var(--gold-light); }
+.marco .ano { font-family: "Cormorant"; font-weight: 500; font-size: 40px; color: var(--cream); line-height: 1; }
+.marco .dia { font-family: "Cormorant"; font-weight: 700; font-size: 12px; letter-spacing: .22em; color: var(--gold-light); margin-top: 8px; text-transform: uppercase; }
+.marco p { margin-top: 12px; font-size: 16.5px; line-height: 1.45; color: #d0c6ae; }
+.marco img { width: 64px; height: 80px; object-fit: cover; object-position: top; float: right; margin: 0 0 6px 12px; border: 1px solid rgba(210,173,108,.4); }
+.marco.luz { border-color: rgba(242,200,121,.55); box-shadow: 0 0 40px -18px rgba(242,180,90,.5) inset; }
+.marco.luz .ano { color: var(--flame); }
+.dica { text-align: center; font-size: 15px; font-style: italic; color: #92876f; }
+
+/* ---------- partes ---------- */
+.partes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 760px) { .partes { grid-template-columns: 1fr; } }
+.parte { background: var(--paper-2); border: 1px solid var(--border); overflow: hidden; }
+.parte .pint { position: relative; height: 180px; background-size: cover; background-position: center 25%; }
+.parte .pint::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(18,17,13,.05), rgba(18,17,13,.82)); }
+.parte .pint span { position: absolute; left: 22px; bottom: 16px; z-index: 1; font-family: "Cormorant"; font-weight: 700; font-size: 12.5px; letter-spacing: .32em; color: var(--gold-light); }
+.parte .corpo { padding: 20px 22px 24px; }
+.parte h3 { font-size: 26px; font-weight: 500; color: var(--title); }
+.parte .lista { margin-top: 8px; font-size: 17.5px; }
+.parte .lista li { margin-top: 7px; }
+.parte .lista b { font-weight: 600; }
+.extra { margin-top: 20px; padding: 22px; border: 1px dashed var(--gold); text-align: center; font-size: 18px; }
+.extra b { font-family: "Cormorant"; font-weight: 700; font-size: 14px; letter-spacing: .24em; color: var(--gold); }
+
+/* ---------- páginas ---------- */
+.paginas { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 22px 20px; margin: 0 -22px; scrollbar-width: none; }
+.paginas::-webkit-scrollbar { display: none; }
+.paginas img { flex: none; width: 70%; max-width: 300px; scroll-snap-align: center; box-shadow: 0 14px 30px rgba(0,0,0,.6); }
+@media (min-width: 900px) {
+  .paginas { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; margin: 0; padding: 4px 0 6px; }
+  .paginas img { width: 100%; max-width: none; transition: transform .3s; }
+  .paginas img:hover { transform: translateY(-6px); }
+  .so-celular { display: none; }
+}
+.legenda { margin-top: 14px; text-align: center; font-size: 16px; font-style: italic; }
+
+/* ---------- método ---------- */
+.metodo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+@media (max-width: 760px) { .metodo { grid-template-columns: 1fr; gap: 22px; } }
+.metodo div { border-top: 1px solid var(--line); padding-top: 18px; }
+.metodo h3 { color: var(--title); }
+.metodo p { margin-top: 8px; font-size: 17.5px; }
+
+/* ---------- perguntas ---------- */
+.qa { margin-top: 18px; padding: 24px 24px 22px; background: var(--paper); border: 1px solid var(--border); }
+.qa:first-of-type { margin-top: 0; }
+.qa h3 { font-style: italic; font-weight: 500; font-size: 23px; color: var(--title); margin-bottom: 8px; }
+.qa p { font-size: 18px; }
+
+.duas { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+@media (max-width: 620px) { .duas { grid-template-columns: 1fr; } }
+.duas h3 { font-size: 24px; color: var(--title); }
+.duas .lista { font-size: 18px; margin-top: 6px; }
+
+/* ---------- assinatura ---------- */
+.assina { text-align: center; }
+.assina p { font-size: 19px; }
+.assina .arroba { margin-top: 18px; font-family: "Cormorant"; font-weight: 700; font-size: 14px; letter-spacing: .3em; }
+.assina .arroba a { color: var(--gold); text-decoration: none; }
+
+/* ---------- oferta ---------- */
+.oferta { background: var(--night) url("img/fundo-oferta.webp") center / cover; }
+.oferta::before { content: ""; position: absolute; inset: 0; background: rgba(14,13,10,.9); }
+.oferta .wrap { position: relative; }
+.caixa { border: 1px solid rgba(210,173,108,.5); padding: 42px 26px 34px; background: rgba(20,19,15,.78); text-align: center; backdrop-filter: blur(3px); }
+.caixa > img { width: 150px; margin: 0 auto 26px; box-shadow: 0 14px 30px rgba(0,0,0,.8), 0 0 0 1px rgba(210,173,108,.3); }
+.caixa .lista { text-align: left; max-width: 440px; margin: 0 auto; }
+.caixa .lista li { margin: 0; padding-top: 11px; padding-bottom: 11px; border-bottom: 1px solid rgba(210,173,108,.14); font-size: 18px; }
+.caixa .lista li::before { top: 1.32em; }
+.valor-grande { margin: 30px 0 22px; }
+.valor-grande b { font-family: "Cormorant"; font-weight: 500; font-size: 68px; color: var(--cream); line-height: 1; }
+.valor-grande b small { font-size: 24px; vertical-align: 28px; margin-right: 4px; }
+.valor-grande p { margin-top: 10px; font-size: 16px; color: #ab9f86; }
+.junto { margin: 26px auto 0; max-width: 460px; padding: 16px 18px; border: 1px dashed rgba(210,173,108,.45); font-size: 16.5px; color: #cfc5ad; text-align: left; }
+.junto b { color: var(--cream); font-weight: 600; }
+.garantia { margin-top: 30px; display: flex; gap: 18px; align-items: center; text-align: left; }
+.garantia .selo { flex: none; width: 64px; height: 64px; border: 1px solid var(--gold); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: "Cormorant"; color: var(--gold-light); line-height: 1; }
+.garantia .selo b { font-size: 26px; font-weight: 600; } .garantia .selo span { font-size: 9px; font-weight: 700; letter-spacing: .2em; margin-top: 3px; }
+.garantia p { font-size: 16.5px; color: #cfc5ad; }
+
+/* ---------- faq ---------- */
+details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+details:first-of-type { border-top: 1px solid var(--line); }
+summary { cursor: pointer; list-style: none; font-family: "Cormorant"; font-weight: 600; font-size: 21px; padding-right: 30px; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 2px; top: -3px; font-size: 26px; color: var(--gold); transition: transform .25s; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { margin-top: 10px; font-size: 18px; }
+.final { margin-top: 52px; }
+
+footer { background: var(--night); color: #857b66; text-align: center; padding: 40px 22px 110px; font-size: 14px; line-height: 1.8; }
+footer .marca { font-family: "Cormorant"; font-weight: 600; letter-spacing: .55em; padding-left: .55em; color: var(--gold-light); font-size: 13px; margin-bottom: 8px; }
+footer a { color: #ab9f86; }
+
+/* barra fixa no celular */
+.barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: flex; align-items: center; gap: 14px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: rgba(18,17,13,.95); border-top: 1px solid rgba(210,173,108,.3); backdrop-filter: blur(8px); transform: translateY(110%); transition: transform .35s ease; }
+.barra.on { transform: none; }
+.barra .t { flex: 1; min-width: 0; color: #e4dcc8; line-height: 1.2; }
+.barra .t b { display: block; font-family: "Cormorant"; font-weight: 600; font-size: 18px; color: var(--cream); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.barra .t span { font-size: 14px; color: #ab9f86; }
+.barra .cta { width: auto; margin: 0; padding: 11px 18px; font-size: 15px; box-shadow: none; white-space: nowrap; }
+@media (min-width: 900px) { .barra { display: none; } footer { padding-bottom: 44px; } }
+
+/* legibilidade: a Cormorant fica nos títulos; rótulos pequenos em versalete vão para a EB Garamond,
+   maiores e menos espaçados, e todos os números ficam alinhados (sem o 3 e o 1 descendo da linha) */
+body { font-variant-numeric: lining-nums; }
+.kicker, .hero .marca, .hero .data, .hero .rolar, .versao .quem, .folha .tit, .folha .fim, .marco .dia,
+.parte .pint span, .extra b, .assina .arroba, .garantia .selo span, footer .marca, .num b small {
+  font-family: "EB Garamond", Georgia, serif; font-weight: 500; font-variant-numeric: lining-nums; }
+.kicker { font-size: 14px; letter-spacing: .26em; padding-left: .26em; }
+.hero .marca, footer .marca { font-size: 13px; letter-spacing: .38em; padding-left: .38em; }
+.hero .data { font-size: 15px; letter-spacing: .22em; color: #e0bf82; text-shadow: 0 1px 10px rgba(0,0,0,.9), 0 0 2px rgba(0,0,0,.8); }
+.versao .quem, .marco .dia, .parte .pint span { font-size: 13px; letter-spacing: .18em; }
+.folha .tit, .folha .fim { font-size: 13px; letter-spacing: .16em; }
+.extra b { font-size: 14px; letter-spacing: .18em; }
+.assina .arroba { font-size: 14px; letter-spacing: .2em; }
+.num b small { font-size: .3em; letter-spacing: .12em; }
+.hero .sub, .marco p, .num p { color: #ddd4bf; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="marca">LECTIO SACRA</p>
+  <div class="wrap">
+    <p class="data">BELÉM DO PARÁ · 1763–1769</p>
+    <h1>A Inquisição nunca teve tribunal no Brasil. <em>Mas mandou um inquisidor a Belém.</em></h1>
+    <p class="sub">Durante seis anos, a gente simples da Amazônia sentou-se diante da Mesa do Santo Ofício para confessar as próprias culpas e denunciar as dos vizinhos, e um notário escreveu tudo. Este livro conta essas histórias pelo documento e explica, antes, o que a Inquisição foi de verdade.</p>
+    <div class="produto">
+      <img src="img/capa.webp" width="112" height="159" alt="Capa do e-book A Inquisição no Brasil">
+      <ul class="lista">
+        <li>E-book ilustrado em PDF</li>
+        <li>230 páginas, com gravuras, pinturas e plantas antigas de Belém</li>
+        <li>O documento na grafia original, com a tradução</li>
+        <li>Acesso imediato</li>
+      </ul>
+    </div>
+    <p class="valor preco"><b>R$ <span data-price>14,90</span></b><span class="obs">pagamento único</span></p>
+    <a class="cta" href="#oferta" data-checkout>Quero o e-book</a>
+    <p class="nota">7 dias de garantia · Pix ou cartão</p>
+    <p class="rolar">ROLE</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="kicker rv">Os dois erros</p>
+    <h2 class="rv">Nem lenda negra, nem defesa cega</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="versoes">
+      <div class="versao rv">
+        <p class="ano">Lenda</p>
+        <p class="quem">O que se repete</p>
+        <blockquote>“A Inquisição matou milhões.”</blockquote>
+        <p>O número aparece com segurança em aulas, filmes e discussões de internet, mas não resiste aos arquivos, porque os tribunais registravam cada sentença e os historiadores do século XX contaram os processos um por um, chegando a uma escala muito menor do que a da propaganda.</p>
+      </div>
+      <div class="versao rv">
+        <p class="ano">Defesa</p>
+        <p class="quem">O que também não serve</p>
+        <blockquote>“Era outro tempo, e tudo foi justo.”</blockquote>
+        <p>O tribunal português escondia do réu o nome de quem o acusava, tomava os bens de famílias inteiras, perseguiu por dois séculos os descendentes de judeus convertidos à força e entregou à morte, pelas mãos da justiça do rei, mais de mil pessoas.</p>
+      </div>
+    </div>
+    <div class="veredito rv">
+      <p>Na folha de rosto do livro está uma frase de São João Paulo II, escrita em 2004 ao receber as atas do simpósio sobre a Inquisição promovido pela Santa Sé: “Antes de pedir perdão, é necessário ter um conhecimento exato dos acontecimentos”.</p>
+      <p>Essa frase corta para os dois lados, e é ela que conduz todas as páginas: <strong>desmontar com números e fontes o que é exagero</strong>, sem usar esses números como desculpa para o que o tribunal de fato fez, que foi o mesmo caminho que a própria Igreja percorreu ao abrir os arquivos, ouvir os historiadores e só depois pedir perdão.</p>
+    </div>
+  </div>
+</section>
+
+<section class="escura">
+  <div class="wrap larga">
+    <p class="kicker rv">Quatro números desta história</p>
+    <h2 class="rv">O que os arquivos guardaram</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="numeros rv">
+      <div class="num"><b>4<small>VISITAS</small></b><p>O Brasil nunca teve tribunal do Santo Ofício, mas recebeu quatro visitações, e a do Grão-Pará, de 1763 a 1769, foi a última e a mais longa.</p></div>
+      <div class="num"><b>46</b><p>Depoimentos registrados no Livro da Visitação, de quarenta e cinco pessoas que mencionam cerca de 485 moradores de Belém e do interior.</p></div>
+      <div class="num"><b>1.180</b><p>Execuções, aproximadamente, em cerca de 31 mil sentenças da Inquisição portuguesa ao longo de dois séculos e meio, menos de quatro por cento do total.</p></div>
+      <div class="num"><b>0<small>FOGUEIRAS</small></b><p>Nenhum réu do Pará foi condenado à fogueira, e pouco mais de nove pessoas foram remetidas a Lisboa em seis anos de visita.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="trecho">
+  <div class="wrap">
+    <p class="kicker rv">Um trecho do livro</p>
+    <h2 class="rv">O chapéu que flutuou sozinho</h2>
+    <div class="chama rv"><span></span></div>
+    <article class="folha rv">
+      <figure>
+        <img src="img/trecho.webp" width="900" height="602" loading="lazy" alt="Planta antiga da cidade de Belém do Pará">
+        <figcaption>Planta da cidade do Pará, c. 1771, atribuída ao engenheiro Gaspar João Geraldo de Gronsfeld. Fórum Landi.</figcaption>
+      </figure>
+      <div>
+        <p class="tit">BELÉM, JUNHO DE 1763</p>
+        <p class="capitular">Numa manhã de junho, pouco antes da festa de São João, um escravo africano chamado José entrou na casa do carpinteiro Manoel Francisco da Cunha, na Rua Direita de Santo Antônio, para tratar de uma escrava da casa que estava gravemente doente, e antes de começar pediu dinheiro, guardou a moeda na copa do próprio chapéu, pousou o chapéu no chão e começou a dizer palavras que ninguém entendia.</p>
+        <p>Segundo o carpinteiro contou três meses e meio depois ao inquisidor, o chapéu ergueu-se então “sem mão visível”, deu uma volta no ar e foi cair entre os pés do curandeiro e da doente, com o dinheiro debaixo da copa, enquanto o dono da casa exclamava “Jesus Maria” e sentia os cabelos se arrepiarem.</p>
+        <p>O livro mostra o trecho do documento na grafia de 1763, conta o que o mesmo José fez com uma cuia de água e uma tábua, apresenta o procurador de causas que o tinha recomendado e que foi à Mesa confessar as próprias benzeduras, e separa com cuidado o que o denunciante viu, o que ele concluiu e o que o tribunal decidiu, que neste caso o Livro não diz.</p>
+        <p class="fim">PARTE III · O QUE BELÉM CONFESSOU AO SANTO OFÍCIO</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="tempo">
+  <div class="wrap">
+    <p class="kicker rv">Linha do tempo</p>
+    <h2 class="rv">De Roma a Belém, e de volta a Roma</h2>
+    <div class="chama rv"><span></span></div>
+  </div>
+  <div class="trilho rv">
+    <div class="marco"><p class="ano">1231</p><p class="dia">Gregório IX</p><p>O papa começa a nomear inquisidores permanentes, sobretudo dominicanos e franciscanos.</p></div>
+    <div class="marco"><p class="ano">1536</p><p class="dia">23 de maio · Paulo III</p><p>A bula que cria a Inquisição portuguesa, pedida a Roma pelo rei D. João III.</p></div>
+    <div class="marco"><p class="ano">1591</p><p class="dia">Bahia e Pernambuco</p><p>Começa a primeira visitação do Santo Ofício ao Brasil, que nunca teve tribunal próprio.</p></div>
+    <div class="marco"><p class="ano">1640</p><p class="dia">O Regimento</p><p>A lei do tribunal que vigorou por 134 anos e ainda valia quando o visitador chegou a Belém.</p></div>
+    <div class="marco"><img src="img/malagrida.webp" alt="Retrato do jesuíta Gabriel Malagrida" loading="lazy"><p class="ano">1761</p><p class="dia">21 de setembro · Lisboa</p><p>O jesuíta Gabriel Malagrida, antigo missionário no Pará, é executado no Rossio, no tempo de Pombal.</p></div>
+    <div class="marco luz"><p class="ano">1763</p><p class="dia">25 de setembro · Belém</p><p>Procissão, missa na Sé e leitura do Édito da Fé: começam os trinta dias de graça.</p></div>
+    <div class="marco luz"><p class="ano">1769</p><p class="dia">6 de outubro</p><p>A última audiência do Livro da Visitação, que não tem termo de encerramento.</p></div>
+    <div class="marco"><p class="ano">1821</p><p class="dia">Lisboa</p><p>As Cortes extinguem a Inquisição portuguesa, e os arquivos vão para a Torre do Tombo.</p></div>
+    <div class="marco luz"><p class="ano">1963</p><p class="dia">Dezembro · Torre do Tombo</p><p>O historiador José Roberto do Amaral Lapa encontra, por acaso, o códice esquecido da Visitação.</p></div>
+    <div class="marco luz"><p class="ano">2000</p><p class="dia">12 de março · João Paulo II</p><p>O Dia do Perdão, pelo uso da violência no serviço da verdade.</p></div>
+  </div>
+  <p class="dica so-celular">Arraste para o lado →</p>
+</section>
+
+<section>
+  <div class="wrap larga">
+    <p class="kicker rv">O que tem dentro</p>
+    <h2 class="rv">Três partes e uma conclusão</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="partes">
+      <div class="parte rv">
+        <div class="pint" style="background-image:url('img/parte1.webp')"><span>PARTE I</span></div>
+        <div class="corpo">
+          <h3>O que ninguém te contou sobre a Inquisição</h3>
+          <ul class="lista">
+            <li>Antes da fogueira: por que a Igreja criou um tribunal</li>
+            <li>Madri, Lisboa e Roma: não era uma Inquisição só</li>
+            <li>Chamado à Mesa: como era um processo do Santo Ofício</li>
+            <li><b>Quantos morreram de verdade?</b></li>
+            <li>Nunca houve tribunal no Brasil, mas houve visitas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="parte rv">
+        <div class="pint" style="background-image:url('img/parte2.webp')"><span>PARTE II</span></div>
+        <div class="corpo">
+          <h3>Um Inquisidor em Belém</h3>
+          <ul class="lista">
+            <li>Belém, 1763: a cidade sem jesuítas, no tempo de Pombal e de Malagrida</li>
+            <li><b>Trinta dias de graça</b>: o visitador, os éditos e a primeira audiência</li>
+            <li>O livro em números: o que Belém levou à Mesa, e o que não levou</li>
+          </ul>
+        </div>
+      </div>
+      <div class="parte rv">
+        <div class="pint" style="background-image:url('img/parte3.webp')"><span>PARTE III</span></div>
+        <div class="corpo">
+          <h3>O que Belém confessou ao Santo Ofício</h3>
+          <ul class="lista">
+            <li>O casamento de brincadeira e os dezesseis anos de remorso</li>
+            <li><b>O chapéu que flutuou sozinho</b></li>
+            <li>Um luterano entre os engenheiros do Rei</li>
+            <li>Sabina, a feiticeira que curava governadores</li>
+            <li>O pedaço do altar que virou amuleto</li>
+            <li>O soldado que chamou o diabo, e o diabo não veio</li>
+            <li>A matriarca que enterrou os santos</li>
+            <li>e outros dez casos, do primeiro ao último depoimento do Livro</li>
+          </ul>
+        </div>
+      </div>
+      <div class="parte rv">
+        <div class="pint" style="background-image:url('img/parte4.webp')"><span>CONCLUSÃO</span></div>
+        <div class="corpo">
+          <h3>Pedir perdão sem mentir</h3>
+          <ul class="lista">
+            <li>Os arquivos abertos e os historiadores no Vaticano, em 1998</li>
+            <li>O Dia do Perdão, no Ano Santo de 2000</li>
+            <li><b>A carta de João Paulo II em 2004</b></li>
+            <li>Galileu, Giordano Bruno e o que a Igreja reconheceu</li>
+            <li>De volta ao Grão-Pará</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="extra rv"><b>E NOS APÊNDICES</b><br>Uma linha do tempo que vai das primeiras leis contra a heresia aos documentos de 2004, um glossário com os termos do Santo Ofício e da vida colonial (familiar, relaxe, sambenito, pedra d’ara, bolsa de mandinga) e a lista das fontes e leituras usadas.</div>
+  </div>
+</section>
+
+<section class="escura">
+  <div class="wrap larga">
+    <p class="kicker rv">Por dentro do livro</p>
+    <h2 class="rv">Feito para ler e para guardar</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="paginas rv">
+      <img src="img/pag-9.webp" width="642" height="909" loading="lazy" alt="Abertura da Parte I, O que ninguém te contou sobre a Inquisição">
+      <img src="img/pag-87.webp" width="642" height="909" loading="lazy" alt="Página com o trecho do documento na grafia original e a tradução">
+      <img src="img/pag-36.webp" width="642" height="909" loading="lazy" alt="Página com gravura dos estandartes da Inquisição e dos sambenitos">
+      <img src="img/pag-99.webp" width="642" height="909" loading="lazy" alt="Página com planta antiga da cidade do Pará">
+      <img src="img/pag-11.webp" width="642" height="909" loading="lazy" alt="Página ilustrada com afresco de Gregório IX">
+      <img src="img/pag-201.webp" width="642" height="909" loading="lazy" alt="Abertura da Conclusão, Pedir perdão sem mentir">
+      <img src="img/pag-212.webp" width="642" height="909" loading="lazy" alt="Linha do tempo">
+      <img src="img/pag-3.webp" width="642" height="909" loading="lazy" alt="Sumário">
+    </div>
+    <p class="legenda"><span class="so-celular">Arraste para ver mais páginas. </span>Pinturas e gravuras dos séculos XV a XIX, plantas antigas de Belém e, em cada caso, as palavras do documento na grafia de 1763, com a explicação em português de hoje.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap larga">
+    <p class="kicker rv">Como foi feito</p>
+    <h2 class="rv">Pelo documento, não pela lenda</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="metodo">
+      <div class="rv"><h3>O documento primeiro</h3><p>Cada caso nasce de um termo do Livro da Visitação, publicado em 1978 a partir do códice achado na Torre do Tombo, e é citado com a página, com a grafia original ao lado do português de hoje.</p></div>
+      <div class="rv"><h3>Nada inventado</h3><p>Não há falas, pensamentos ou gestos criados para enfeitar a cena, e quando o Livro não diz como um caso terminou, o leitor fica sabendo que não se sabe, em vez de receber um final imaginado.</p></div>
+      <div class="rv"><h3>Fiel à Igreja, honesto com a história</h3><p>Cada caso traz um quadro com o que a Igreja ensinava sobre aquela culpa, e o livro diz com clareza onde houve erro ou crime e onde houve exagero, com números e fontes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--paper-2);">
+  <div class="wrap">
+    <p class="kicker rv">Talvez você esteja pensando</p>
+    <h2 class="rv">Algumas perguntas honestas</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="qa rv">
+      <h3>“É um livro para defender a Inquisição?”</h3>
+      <p>Não. É um livro para conhecê-la como ela foi, o que obriga a corrigir os números inventados e, ao mesmo tempo, a reconhecer o segredo do processo, o confisco de bens, a perseguição aos cristãos-novos e o uso político do tribunal, que a própria Igreja reconheceu nos documentos lidos na conclusão.</p>
+    </div>
+    <div class="qa rv">
+      <h3>“230 páginas não é muito?”</h3>
+      <p>A primeira parte explica o essencial em cinco capítulos, e os casos de Belém são capítulos curtos e independentes, que se leem como histórias e podem ser lidos um por vez. A linha do tempo e o glossário ficam para consultar quando quiser.</p>
+    </div>
+    <div class="qa rv">
+      <h3>“O livro tem partes pesadas?”</h3>
+      <p>Tem. Alguns depoimentos tratam de violência e de abuso contra escravos e índios, que o documento registra e que o livro conta com clareza e sem detalhes desnecessários, porque mostram quem tinha poder sobre quem naquela sociedade e como o tribunal reagiu. É leitura para adultos.</p>
+    </div>
+    <div class="qa rv">
+      <h3>“E se eu não gostar?”</h3>
+      <p>Você tem 7 dias de garantia. Se achar que não valeu, peça o reembolso pela própria plataforma e recebe o valor integral, sem precisar explicar o motivo.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="rv">Para quem é este livro</h2>
+    <div class="chama rv"><span></span></div>
+    <div class="duas">
+      <div class="rv">
+        <h3>É para você se…</h3>
+        <ul class="lista">
+          <li>já ouviu que “a Inquisição matou milhões” e quer saber o que dizem os arquivos</li>
+          <li>gosta da história do Brasil colonial e da Amazônia</li>
+          <li>quer entender por que a Igreja pediu perdão, e pelo quê</li>
+          <li>quer um bom presente para um católico que gosta de ler</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>Não é para você se…</h3>
+        <ul class="lista vazado">
+          <li>quer um livro que absolva tudo ou que condene tudo</li>
+          <li>procura um tratado acadêmico em notas de rodapé</li>
+          <li>quer um livro impresso (este é digital)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--paper-2); padding: 70px 0;">
+  <div class="wrap assina rv">
+    <p class="kicker">Lectio Sacra</p>
+    <p>A história da Igreja contada pelos documentos, à luz de vela: devagar, com fidelidade e sem medo das partes difíceis.</p>
+    <p class="arroba"><a href="https://www.instagram.com/lectiosacra/">@LECTIOSACRA</a></p>
+  </div>
+</section>
+
+<section class="escura oferta" id="oferta">
+  <div class="wrap">
+    <div class="caixa rv">
+      <img src="img/capa.webp" width="150" height="212" loading="lazy" alt="Capa do e-book">
+      <ul class="lista">
+        <li>E-book completo em PDF, com 230 páginas</li>
+        <li>O que foi a Inquisição: origens, tribunais, processo e números</li>
+        <li>A Visitação do Grão-Pará e dezessete casos contados pelo documento</li>
+        <li>O texto original de 1763 com tradução, e o que a Igreja ensinava em cada caso</li>
+        <li>Linha do tempo, glossário e fontes</li>
+        <li>Acesso imediato, para ler em qualquer aparelho</li>
+      </ul>
+      <div class="valor-grande preco">
+        <b><small>R$</small><span data-price>14,90</span></b>
+        <p>pagamento único, no Pix ou no cartão</p>
+      </div>
+      <a class="cta" href="#oferta" data-checkout>Quero o e-book</a>
+      <p class="nota">Você recebe o acesso por e-mail logo após o pagamento.</p>
+      <p class="junto">No checkout, se quiser, você pode acrescentar <b>Joana d’Arc</b> e <b>França, filha primogênita da Igreja</b>, da mesma coleção, por R$ <span data-bump>14,90</span> cada.</p>
+      <div class="garantia">
+        <div class="selo"><b>7</b><span>DIAS</span></div>
+        <p>Leia com calma. Se em 7 dias achar que o livro não valeu, peça o reembolso pela plataforma e devolvemos o valor integral.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="rv">Perguntas frequentes</h2>
+    <div class="chama rv"><span></span></div>
+    <details><summary>Como recebo o e-book?</summary><p>Assim que o pagamento é confirmado, você recebe um e-mail com o acesso à área de membros, onde o PDF fica disponível para baixar. No Pix e no cartão, isso costuma levar poucos minutos.</p></details>
+    <details><summary>Consigo ler no celular?</summary><p>Sim. O PDF abre em qualquer celular, tablet ou computador. Se preferir papel, você pode imprimir.</p></details>
+    <details><summary>Preciso saber história para entender?</summary><p>Não. A primeira parte explica o que era o Santo Ofício e como funcionava um processo, e cada termo da época, como familiar, sambenito ou pedra d’ara, é explicado na primeira vez que aparece e reunido no glossário.</p></details>
+    <details><summary>O livro fala da Inquisição espanhola?</summary><p>Fala, para separá-la da portuguesa e da romana, porque eram tribunais diferentes, com datas, alvos e senhores diferentes. O foco, porém, é o tribunal de Lisboa, que era o que mandava visitadores ao Brasil.</p></details>
+    <details><summary>Posso dar de presente?</summary><p>Pode. É um bom presente para quem gosta de história da Igreja ou do Brasil colonial, lembrando que alguns casos tratam de temas para leitores adultos.</p></details>
+    <details><summary>Não recebi o acesso. E agora?</summary><p>Confira a caixa de spam e a aba Promoções do e-mail. Se não encontrar, fale com a gente pelo direct do Instagram <a href="https://www.instagram.com/lectiosacra/">@lectiosacra</a>.</p></details>
+    <div class="final">
+      <a class="cta" href="#oferta" data-checkout>Quero o e-book</a>
+      <p class="nota preco">R$ <span data-price>14,90</span> · acesso imediato · 7 dias de garantia</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="marca">LECTIO SACRA</p>
+  <p>Contato: direct do Instagram <a href="https://www.instagram.com/lectiosacra/">@lectiosacra</a></p>
+  <p><a href="../privacidade.html">Política de privacidade</a> · © 2026 Lectio Sacra</p>
+</footer>
+
+<div class="barra" aria-hidden="true">
+  <div class="t"><b>A Inquisição no Brasil</b><span class="preco">R$ <span data-price>14,90</span> · 7 dias de garantia</span></div>
+  <a class="cta" href="#oferta" data-checkout tabindex="-1">Quero</a>
+</div>
+
+<script>
+  const PRECO = "14,90";
+  const BUMP = "14,90";
+  const CHECKOUT = "https://pay.hub.la/C9fLc52J8c19S0toUj9y";
+  const ANGULO = new URLSearchParams(location.search).get("angulo");
+  document.querySelectorAll("[data-price]").forEach(el => el.textContent = PRECO);
+  document.querySelectorAll("[data-bump]").forEach(el => el.textContent = BUMP);
+  if (CHECKOUT) document.querySelectorAll("[data-checkout]").forEach(a => a.href = CHECKOUT + (ANGULO ? "?utm_content=" + encodeURIComponent(ANGULO) : ""));
+
+  // revelação ao rolar
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+  // barra fixa: aparece depois do topo e some na oferta
+  const barra = document.querySelector(".barra"), hero = document.querySelector(".hero"), oferta = document.getElementById("oferta");
+  let passou = false, naOferta = false;
+  const upd = () => barra.classList.toggle("on", passou && !naOferta);
+  new IntersectionObserver(([e]) => { passou = !e.isIntersecting; upd(); }).observe(hero);
+  new IntersectionObserver(([e]) => { naOferta = e.isIntersecting; upd(); }).observe(oferta);
+</script>
+</body>
+</html>
